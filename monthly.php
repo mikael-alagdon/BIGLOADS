@@ -8,6 +8,15 @@ $activeTable = "METER_1";
 $report = "5";
 $convertedDate =  date("m/d/Y");
 
+
+
+// $month = date('m/d/y', $convertedDate);
+// $convertedMonth = strtotime($month);
+
+$month = date("m",strtotime($convertedDate));
+$year = date("Y",strtotime($convertedDate));
+
+
 $alert = "";
 
 if(isset($_POST["submit"])){
@@ -18,7 +27,9 @@ if(isset($_POST["submit"])){
     
     $date = strtotime($filterDate);
     
-    $convertedDate = date('m/d/Y', $date);
+    // $convertedDate = date('m/d/Y', $date);
+    $convertedMonth = date('m', $date);
+    $convertedYear = date('Y', $date);
 
     if($meter === "METER 1"){
         $activeTable = "METER_1";
@@ -41,7 +52,7 @@ if(isset($_POST["submit"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        DAILY REPORT
+        MONTHLY REPORT
     </title>
             <!-- CSS  -->
     <link rel="stylesheet" href="css/styles.css">
@@ -85,9 +96,9 @@ if(isset($_POST["submit"])){
                             <label class="sr-only" for="inlineFormInputGroup">Date</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text">Date</div>
+                                    <div class="input-group-text">Month</div>
                                 </div>
-                                <input name="date" class="form-control" type="date" required>
+                                <input name="date" class="form-control" type="month" required>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -141,17 +152,21 @@ if(isset($_POST["submit"])){
                         </thead>
                         <tbody>
                             <?php
+                            // filter
                             if(isset($_POST["submit"])){
-                                $query = "SELECT * 
-                                          FROM $activeTable
-                                          WHERE datepart(mi, DATE) % $report = 0
-                                          AND  FORMAT(DATE, 'MM/dd/yyyy') = '$convertedDate'
-                                          ORDER BY DATE";
+                                $query = "  SELECT *
+                                            FROM $activeTable
+                                            WHERE datepart(mi, DATE) % $report = 0
+                                            AND datepart(m, DATE) = '$convertedMonth'
+                                            AND datepart(yy, DATE) = '$convertedYear'
+                                            ORDER BY DATE";
+                                          
                             }else{
                                 $query = "SELECT * 
                                           FROM $activeTable
                                           WHERE datepart(mi, DATE) % 5 = 0
-                                          AND  FORMAT(DATE, 'MM/dd/yyyy') = '$convertedDate'
+                                          AND datepart(m, DATE) = '$month'
+                                          AND datepart(yy, DATE) = '$year'
                                           ORDER BY DATE DESC";
                             }
 

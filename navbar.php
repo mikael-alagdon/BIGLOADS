@@ -13,7 +13,7 @@
         <a class="nav-link" href="index">DAILY</a>
       </li>
       <li id="monthly" class="nav-item ">
-        <a class="nav-link" href="index">MONTHLY</a>
+        <a class="nav-link" href="monthly">MONTHLY</a>
       </li>
       <!-- <li id="meter3" class="nav-item ">
         <a class="nav-link" href="#">METER 3</a>
