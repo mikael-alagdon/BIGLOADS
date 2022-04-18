@@ -1,0 +1,23 @@
+.buttons-excel{
+    z-index: 99;
+    float: right;
+    margin-bottom: 10px;
+}
+.navbar{
+    background-color: #115500;
+    color: white;
+}
+.navbar > a{
+    color: white;
+    text-decoration: none;
+}
+.navbar > a:hover{
+    color: #E8E8E8;
+}
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+.nav-link:hover{
+    color: #E8E8E8;
+}
