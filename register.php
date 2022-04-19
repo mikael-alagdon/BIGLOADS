@@ -1,3 +1,16 @@
+<?php 
+
+// if(isset($_GET["error"])){
+//     if($_GET["error"] == 1){
+//         echo "error 1 badi";
+//     }
+//     if($_GET["error"] == 2){
+//         echo "error 2 badi";
+//     }
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,26 +41,26 @@
 
     <div class="card">
         <div class="card-header">
-            <h4>Sign In</h4>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <h4>Sign Up</h4>
+            <small id="emailHelp" class="form-text text-muted">Create an account.</small>
         </div>
         <div class="card-body">
-            <form>
+            <form action="handleRegister" method="POST">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" id="password">
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input name="confirmPassword" type="password" class="form-control" id="confirmPassword">
                 </div>
-                <button type="submit" class="btn btn-success w-100">Submit</button>
+                <button name="register" type="submit" class="btn btn-success w-100">Register</button>
             </form>
-            <small id="emailHelp" class="form-text text-muted">Don't have an account yet? <a href="register">Register here.</a></small>
+            <small id="emailHelp" class="form-text text-muted">Already have an account? Go back to <a href="index">login.</a></small>
         </div>
         
     </div>
