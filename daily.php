@@ -1,6 +1,11 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
+
 require_once("connection/conn.php");
+require_once("sessions.php");
+
+
+
 $PHP_SELF = htmlspecialchars($_SERVER['PHP_SELF']);
 $meter = "METER 1";
 

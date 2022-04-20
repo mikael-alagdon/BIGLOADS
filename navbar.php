@@ -19,5 +19,18 @@
         <a class="nav-link" href="#">METER 3</a>
       </li> -->
     </ul>
+
+<div class="btn-group">
+  <a type="button" class="btn dropdown-toggle" id="show-user" data-toggle="dropdown" aria-expanded="false">
+    <?php echo $_SESSION["currentUser"];?>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right">
+    <!-- <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+  <div class="dropdown-divider"></div> -->
+    <a class="dropdown-item" type="button" href="logout">Logout</a>
   </div>
+</div>  
+  </div>
+     
 </nav>

@@ -1,3 +1,31 @@
+<?php 
+
+session_start();
+$alert = "";
+$alert2= "";
+
+if(isset($_GET["error"])){
+    if($_GET["error"] == 1){
+        $message = "Username or password is incorrect";
+        $alert = "<small style='color: red;' class='form-text'>" . $message . "</small>";
+    }
+}
+if(isset($_SESSION["success"])){
+    if($_SESSION["success"] = 1){
+        $message = "Success!";
+        $alert2 = "
+        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>". $message . "</strong> Account created.
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+        </div>
+        ";
+        session_unset();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,29 +51,32 @@
     TARELCO I BIGLOADS
 </a>
 </nav>
-
 <div class="container col-md-3 mt-5 p-5">
 
     <div class="card">
         <div class="card-header">
             <h4>Sign In</h4>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">If you already have an account, sign in here.</small>
         </div>
+        <?php echo $alert2;?>
         <div class="card-body">
-            <form>
+            <form action="handleLogin" method="POST">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="Username">Username</label>
+                    <input name="username" type="text" class="form-control" id="Username">
+                <?php echo $alert?>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="Password">Password</label>
+                    <input name="password" type="password" class="form-control" id="password">
                 </div>
-                <div class="form-group form-check">
+                <!-- <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Submit</button>
+                </div> -->
+                <br>
+                <input type="submit" name="login" class="btn btn-success w-100" value="Log In">
+                <!-- <button name="login" type="submit" class="btn btn-success w-100">Log In</button> -->
             </form>
             <small id="emailHelp" class="form-text text-muted">Don't have an account yet? <a href="register">Register here.</a></small>
         </div>

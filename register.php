@@ -1,13 +1,18 @@
 <?php 
 
-// if(isset($_GET["error"])){
-//     if($_GET["error"] == 1){
-//         echo "error 1 badi";
-//     }
-//     if($_GET["error"] == 2){
-//         echo "error 2 badi";
-//     }
-// }
+$alert = "";
+$alert2 = "";
+
+if(isset($_GET["error"])){
+    if($_GET["error"] == 1){
+        $message = "Passwords do not match.";
+        $alert = "<small style='color: red;' class='form-text'>" . $message . "</small>";
+    }
+    if($_GET["error"] == 2){
+        $message = "Username is already taken";
+        $alert2 = "<small style='color: red;' class='form-text'>" . $message . "</small>";
+    }
+}
 
 ?>
 
@@ -42,21 +47,24 @@
     <div class="card">
         <div class="card-header">
             <h4>Sign Up</h4>
-            <small id="emailHelp" class="form-text text-muted">Create an account.</small>
+            <small id="" class="form-text text-muted">Create an account.</small>
         </div>
         <div class="card-body">
             <form action="handleRegister" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                    <input name="username" type="text" class="form-control" id="username">
+                    <?php echo $alert2?>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input name="password" type="password" class="form-control" id="password">
+                    <?php echo $alert?>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <input name="confirmPassword" type="password" class="form-control" id="confirmPassword">
+                    <?php echo $alert?>
                 </div>
                 <button name="register" type="submit" class="btn btn-success w-100">Register</button>
             </form>
@@ -67,4 +75,16 @@
 
 </div>
 </body>
+
+<script>
+
+$(document).ready(function() {
+
+    // prevent form resubmission
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+} );
+
+</script>
 </html>

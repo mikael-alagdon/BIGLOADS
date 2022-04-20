@@ -21,3 +21,11 @@
 .nav-link:hover{
     color: #E8E8E8;
 }
+
+#show-user{
+    color: white;
+}
+#show-user:hover{
+    transition: 0.1s;
+    background: #0F3405;
+}

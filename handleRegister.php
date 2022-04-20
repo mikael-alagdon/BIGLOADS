@@ -3,6 +3,7 @@
 	// error_reporting(E_ALL & ~E_NOTICE);
 
     require_once("connection/conn.php");
+    session_start();
 
 	if(isset($_POST["register"])){
 
@@ -12,7 +13,6 @@
 
         if($password != $confirmPassword){
             
-            echo "mnali kapatid";
             header("Location: register?error=1");
 
         }else{
@@ -30,7 +30,8 @@
                 // die( print_r( sqlsrv_errors(), true));;
                 die(header("Location: register?error=2"));
             }
-            header("Location: index?success=1");
+            header("Location: index");
+            $_SESSION["success"] = 1;
         }
 
 	}
